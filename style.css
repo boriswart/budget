@@ -1,0 +1,153 @@
+body{
+    background-color: burlywood;
+    border-left:   outset;
+    border-right:  outset;
+    border-top:    outset;
+    border-bottom: outset;
+    font-size: 12pt;
+}
+
+input[type="text"]
+{
+    width: 35%;
+    color:rgb(17, 10, 3);
+    text-decoration-color: black;
+}
+
+input.grid[type="text"]
+{
+   display: block;
+   float: left;
+   width: 25%;
+}
+
+input[type="checkbox"]
+{
+  vertical-align: 1.0em;
+  padding: 10px;
+}
+
+input.border{
+    border-color: #f5eee3;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-right: 1px;
+    border-left: 1px;
+}
+
+.checkbox-grid li {
+  display: block;
+  float: left;
+  width: 25%;
+}
+
+.fa-plus-circle{
+    text-decoration-color: darkblue;
+}
+button{
+    margin-bottom: 1.0em;
+}
+
+.card {
+    background-color: wheat;
+    color: black;
+    border-radius: 5px;
+    margin:  4px;
+}
+
+.small{
+  font-size: 9pt;
+}
+
+.card.dark {
+    background-color: #58452e;
+    color: #eee1e1;
+    box-shadow: rgb(87, 65, 65);
+}
+
+.center{
+    align-items: center;
+}
+
+button{
+    background-color: cornsilk;
+    text-decoration-color: darkblue;
+}
+.cell{
+    background-color:rgb(255, 238, 223);
+    width: 10%;
+    height: 10%;
+    font-size: 9pt;
+    border-top: dotted;
+    border-bottom: dotted;
+    border-left: dotted;
+    border-right: dotted;
+    border-width: 1px;
+    border-color: olivedrab;
+    display: block;
+}
+
+
+
+.cell.even{
+    border-left: none;
+    border-right: none;
+}
+
+.cell.next-row{
+    border-top: none;
+}
+
+.cell.blue{
+    background-color: #cacaf6;
+}
+.cell.green{
+    background-color: #c7f7e3;
+}
+
+.header{
+  font-size: 20pt;
+}
+.shadow{
+  filter: drop-shadow(var(--shadow));
+}
+
+.d-flex{
+  display: flex;
+  align-items: center;
+}
+.d-flex.space-between{
+  justify-content: space-between;
+}
+
+.d-flex.space-around{
+  justify-content: space-around;
+}
+
+.hidden{
+    display:none
+}
+
+.mr-1{
+    margin-right: 0.5em;
+}
+
+.mr-2{
+    margin-right: 1.0em;
+}
+
+.mr-3{
+    margin-right: 1.5em;
+}
+
+.ml-1{
+    margin-left: 0.5em;
+}
+
+.ml-2{
+    margin-left: 1.0em;
+}
+
+.ml-3{
+    margin-left: 1.5em;
+}

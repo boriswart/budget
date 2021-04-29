@@ -1,0 +1,109 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buget from scratch</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="container card">
+        <div class="d-flex space-between">
+            <span>
+                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                My Budget
+            </span>
+            <span id="begin-balance" class="hidden">0</span>
+            <div class=" d-flex space-between">
+                <i class="fa fa-wrench" aria-hidden="true" onclick="changeOwner()"></i>
+                <span id="owner" class="owner ml-1">Owner: William Andersen</span>
+            </div>
+        </div>
+    </header>
+
+    <form class="card dark " onsubmit="addTransOrIncomeOrChangeOwner(event)">
+        <div id="new-transaction-form" class=" ">
+            <div class="d-flex space-between">
+                <p class="">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span>Add transaction</span>
+                </p>
+                <p class=>
+                    <span class="small">To clear stored transactions: Change Owner to 'clearit' and reload page </span>
+                </p>
+            </div>
+            <div class="d-flex center ">
+                <label for="Income">Income:</label>
+                <input type="checkbox" name="incomeCheckbox" onclick="changeForm()">
+            </div>
+            <div class="d-flex space-between space-around">
+                <div id="item-type" class=" ">
+                    <label for="item">Item:</label>
+                    <input type="text" name="item">
+                </div>
+                <div id="cost-type" class=" ">
+                    <label for="cost">Cost:</label>
+                    <input type="fixed" name="cost">
+                </div>
+                <div id="qty-type" class=" ">
+                    <label for="qty">Qty:</label>
+                    <input type="fixed" name="qty" value="1">
+                </div>
+                <div id="income-type" class="hidden">
+                    <label for="Income-amt">Income:</label>
+                    <input type="fixed" name="incomeAmt">
+                </div>
+                <div id="description-type" class="hidden">
+                    <label for="Description">Description:</label>
+                    <input type="text" name="description">
+                </div>
+            </div>
+        </div>
+        <div class="card-dark hidden" id="change-owner">
+            <div class="d-flex center">
+                <div id="changeOwner" class="d-flex center space-between space-around">
+                    <span>
+                        <label for="Owner">Owner</label>
+                        <input type="text" name="ownerName">
+                    </span>
+                    <span>
+                        <label for="begBalance">Beg.Bal</label>
+                        <input type="fixed" name="beginBalance">
+                    </span>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="submit-cancel" class="d-flex space-between">
+            <button type="submit" onsubmit="addTransOrIncomeOrChangeOwner()">Submit</button>
+            <div id="account-classes" class="d-flex space-between checkbox-grid">
+                <label for="Food">Food</label>
+                <input type="checkbox" name="foodChk" onclick="foodTest()">
+            </div>
+            <button class="btn-cancel" type="button" onclick="toggleAddContactForm()">cancel</button>
+        </div>
+
+    </form>
+    <main>
+        <div id="computing-location" class="d-flex catagories last">
+            <span id="A1" class="cell blue">Item:</span>
+            <span id="B1" class="cell blue even">Cost/Incom:</span>
+            <span id="C1" class="cell blue ">Qty:</span>
+            <span id="D1" class="cell even">:</span>
+            <span id="E1" class="cell">:</span>
+            <span id="F1" class="cell even">:</span>
+            <span id="G1" class="cell">:</span>
+            <span id="H1" class="cell even">:</span>
+            <span id="I1" class="cell">:</span>
+            <span id="J1" class="cell blue ">Total:</span>
+        </div>
+    </main>
+    <i class="fa fa-lg fa-plus-circle fab" onclick="toggleTransactionForm()"></i>
+    <script src="main.js"></script>
+</body>
+
+</html>
