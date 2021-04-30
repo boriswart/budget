@@ -6,7 +6,7 @@ let spendingAccounts = ["food", "apart", "phone", "college", "gas", "misc"]
 let ownerName = "William Andersen"
 let initialBalance = 0
 let columnLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-let currentCell = 'A1'
+let currentCell = 'A0'
 
 let changeOwnerformElement = document.getElementById("change-owner")
 let chgOwnerformElement = document.getElementById("changeOwner")
@@ -164,6 +164,7 @@ function loadStoredBudget() {
         currentNumberofBudgetTrans = budgetTrans.length
     } else {
         changeOwner()
+        currentCell = "A0"
     }
     /* console.log("Stored Transactions", currentNumberofBudgetTrans)  */
     budgetTrans.forEach(x => {
@@ -196,7 +197,7 @@ function drawTransaction(itm, cost, qty, colAccount) {
     let multiplyResult = 0
     checkLineAddLine()
     let currentCellPtr = document.getElementById(currentCell)
-    console.log("Draw Transaction", itm)
+    console.log("Draw Transaction", itm, currentCell)
     currentCellPtr.innerHTML = itm
     incrementCurCellCollumn()
     currentCellPtr = document.getElementById(currentCell)
@@ -235,7 +236,7 @@ function drawChangeOwner(owner, balance) {
     ownerName = owner
     initialBalance = balance
     ownerElement.innerText = "Owner: " + ownerName
-    beginBalanceElement.innerText = "Begin Bal.: " + balance
+    beginBalanceElement.innerText = "Begin Bal.: " + parseFloat(balance)
     beginBalanceElement.classList.remove("hidden")
 
     let lengthSA = spendingAccounts.length
@@ -257,13 +258,11 @@ function drawChangeOwner(owner, balance) {
     incrementCurCellRow()
     zeroCollumn()
 
-
-    console.log(runningTotal)
     runningTotal = parseFloat(balance) + parseFloat(runningTotal)
     console.log(runningTotal)
     if (ownerName == 'clearit') {
         clearStoredBudget()
-        alert("storedmemory is cleared ... please reload page")
+        /* alert("storedmemory is cleared ... please reload page") */
         currentCell = "A1"
         runningTotal = 0
     }
@@ -319,11 +318,12 @@ function incrementCurCellRow() {
     currentCell = currentChar + currentNum
 }
 
+/*    Not Needed fuction : part of drawChangeOwner func
 function setupApp() {
     drawChangeOwner("William", 0)
     let ownerElement = document.getElementById("owner")
     ownerElement.innerText = "Owner: " + ownerName
-}
+}  */
 
 function foodTest() {
     console.log("chk")
@@ -394,6 +394,7 @@ function changeForm() {
     }
 }
 
-setupApp()
+/*  setupApp()  -redundient */
+drawChangeOwner(ownerName, 0)
 loadStoredBudget()
-changeOwner(ownerName, beginBalanceElement.innerText)
+console.log("Cell: ", currentCell)
