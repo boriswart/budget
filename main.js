@@ -403,4 +403,5 @@ function changeForm() {
 /*  setupApp()  -redundient */
 drawChangeOwner(ownerName, 0)
 loadStoredBudget()
+drawSpendingAccounts()
 console.log("Cell: ", currentCell)
