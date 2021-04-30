@@ -70,7 +70,7 @@ function addToSpendingAccount(adder) {
 
 function addToRunningTotal(adder) {
     locationPtr = document.getElementById(currentCell)
-    runningTotal = parseFloat(adder) + parseFloat(runningTotal)
+    runningTotal = parseFloat(Math.floor((parseFloat(adder) * 100) + (parseFloat(runningTotal) * 100))) / 100
     locationPtr.innerText = runningTotal.toString()
 }
 
@@ -105,14 +105,14 @@ function addTransOrIncomeOrChangeOwner(event) {
             spendingAccounts.forEach(x => {
                 checkName = (x + 'Chk')
                 checkboxPtr = document.getElementsByName(checkName)
+                I++
                 if (checkboxPtr[0].checked) {
                     index = I
                 }
-                I++
             })
             try {
-                if (index >= -1) {
-                    index += 4
+                if (index > -1) {
+                    index += 3
                     drawTransaction(form.item.value, form.cost.value, form.qty.value, columnLetter[index])
                     storeTransaction(form.item.value, form.cost.value, form.qty.value, columnLetter[index])
                     form.reset()
@@ -205,7 +205,7 @@ function drawTransaction(itm, cost, qty, colAccount) {
     currentCellPtr = document.getElementById(currentCell)
     currentCellPtr.innerHTML = qty
 
-    multiplyResult = parseFloat(cost) * parseFloat(qty) * parseFloat(-1)
+    multiplyResult = (100 * parseFloat(cost) * parseFloat(qty) * parseFloat(-1)) / 100
     goSpendingAccount(multiplyResult, colAccount)
 
     goToTotal(multiplyResult)
@@ -221,10 +221,10 @@ function drawIncomeTransaction(desc, income) {
     currentCellPtr.innerHTML = desc
     incrementCurCellCollumn()
     currentCellPtr = document.getElementById(currentCell)
-    currentCellPtr.innerHTML = parseFloat(income)
+    currentCellPtr.innerHTML = parseFloat(income * 100) / 100
 
 
-    goToTotal(income.valueOf())
+    goToTotal((100 * income.valueOf()) / 100)
 
     incrementCurCellRow()
     zeroCollumn()
@@ -263,7 +263,9 @@ function drawChangeOwner(owner, balance) {
     console.log(runningTotal)
     if (ownerName == 'clearit') {
         clearStoredBudget()
-        console.warn("storedmemory is cleared ... please reload page")
+        alert("storedmemory is cleared ... please reload page")
+        currentCell = "A1"
+        runningTotal = 0
     }
 }
 function checkLineAddLine() {
