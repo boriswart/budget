@@ -358,7 +358,7 @@ function drawSpendingAccounts() {
     </div>
     `
     })
-    spendingAccountElem.innerHTML = template
+    spendingAccountElement.innerHTML = template
 }
 
 
@@ -368,7 +368,7 @@ function changeOwnerBack() {
     let newTransactionElement = document.getElementById("new-transaction-form")
     let fieldsElement = document.getElementById("account-classes")
     let submitCancelElement = document.getElementById("submit-cancel")
-    
+
     newTransactionElement.classList.remove("hidden")
     changeOwnerformElement.classList.add("hidden")
     ownerElement.classList.remove("hidden")
