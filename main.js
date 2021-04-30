@@ -386,13 +386,17 @@ function toggleTransactionForm() {
 }
 
 function changeForm() {
+    let accountClassesPtr = document.getElementById("account-classes")
+
     if (incomeCheckboxElem[0].checked) {
+        accountClassesPtr.classList.add("hidden")
         itemFormElement.classList.add("hidden")
         costFormElement.classList.add("hidden")
         qtyFormElement.classList.add("hidden")
         incomeFormElement.classList.remove("hidden")
         descFormElement.classList.remove("hidden")
     } else {
+        accountClassesPtr.classList.remove("hidden")
         itemFormElement.classList.remove("hidden")
         costFormElement.classList.remove("hidden")
         qtyFormElement.classList.remove("hidden")
