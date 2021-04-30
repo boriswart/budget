@@ -335,7 +335,7 @@ function changeOwner() {
     let newTransactionElement = document.getElementById("new-transaction-form")
     let fieldsElement = document.getElementById("account-classes")
     let submitCancelElement = document.getElementById("submit-cancel")
-    
+
     drawSpendingAccounts()
 
     newTransactionElement.classList.add("hidden")
@@ -347,17 +347,18 @@ function changeOwner() {
 }
 
 function drawSpendingAccounts() {
+    let fieldsElement = document.getElementById("account-classes")
     let template = []
-    
+
     spendingAccounts.forEach(x => {
-    template += `
+        template += `
     <div class="border">
     <label for="${x}">${x}</label>
     <input type="checkbox" name="${x + 'Chk'}" >
     </div>
     `
     })
-    fieldsElement.innerHTML = template 
+    fieldsElement.innerHTML = template
 }
 
 
