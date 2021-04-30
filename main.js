@@ -154,6 +154,7 @@ function storeTransaction(item, cost, qty, letterChar) {
 function clearStoredBudget() {
     budgetTrans = []
     window.localStorage.setItem("budget", JSON.stringify(budgetTrans))
+    runningTotal = 0
 }
 
 function loadStoredBudget() {
@@ -255,6 +256,7 @@ function drawChangeOwner(owner, balance) {
     computationElement.innerHTML = template
     incrementCurCellRow()
     zeroCollumn()
+
 
     console.log(runningTotal)
     runningTotal = parseFloat(balance) + parseFloat(runningTotal)
