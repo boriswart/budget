@@ -8,6 +8,7 @@ let initialBalance = 0
 let columnLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 let currentCell = 'A0'
 
+let spendingAccountElement = document.getElementById("account-classes")
 let changeOwnerformElement = document.getElementById("change-owner")
 let chgOwnerformElement = document.getElementById("changeOwner")
 let ownerElement = document.getElementById("owner")
@@ -53,7 +54,6 @@ function goToTotal(adder) {
 
 function goSpendingAccount(adder, columnChar) {
     let storedCell = currentCell
-    let locationPtr = document.getElementById(currentCell)
     let currentChar = columnChar
     let currentNum = currentCell.charAt(1)
     currentCell = currentChar + currentNum
@@ -191,6 +191,7 @@ function reset_form() {
     itemFormElement.classList.remove("hidden")
     costFormElement.classList.remove("hidden")
     qtyFormElement.classList.remove("hidden")
+
 }
 
 function drawTransaction(itm, cost, qty, colAccount) {
@@ -347,7 +348,6 @@ function changeOwner() {
 }
 
 function drawSpendingAccounts() {
-    let fieldsElement = document.getElementById("account-classes")
     let template = []
 
     spendingAccounts.forEach(x => {
@@ -358,7 +358,7 @@ function drawSpendingAccounts() {
     </div>
     `
     })
-    fieldsElement.innerHTML = template
+    spendingAccountElem.innerHTML = template
 }
 
 
@@ -368,7 +368,7 @@ function changeOwnerBack() {
     let newTransactionElement = document.getElementById("new-transaction-form")
     let fieldsElement = document.getElementById("account-classes")
     let submitCancelElement = document.getElementById("submit-cancel")
-
+    
     newTransactionElement.classList.remove("hidden")
     changeOwnerformElement.classList.add("hidden")
     ownerElement.classList.remove("hidden")
