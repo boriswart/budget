@@ -12,11 +12,24 @@
 
 <body>
     <header class="container card">
-        <div class="d-flex space-between">
+        <div class="d-flex space-between space-around">
             <span>
                 <i class="fa fa-file-excel-o" aria-hidden="true"></i>
                 My Budget
             </span>
+            <div class="dropdown d-flex space-between center">
+                <span>
+                    <!--    <button onclick="dropdownUtil()" class="dropbtn">    -->
+                    <span>
+                        Settings:
+                        <i class="fa fa-cog dropbtn" aria-hidden="true" onclick="dropdownUtil()"></i>
+                    </span>
+                    <!--    </button>      -->
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#">Clear Data</a>
+                    </div>
+                </span>
+            </div>
             <span id="begin-balance" class="hidden">0
             </span>
             <div class=" d-flex space-between">
@@ -34,19 +47,16 @@
                     <span>Add transaction</span>
                 </p>
                 <p class=>
-                    <span class="small">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                        <span>
-                            To clear stored transactions: Change Owner to 'clearit' and reload page
-                        </span>
+                    <span>
+                        To clear stored transactions: Change Owner to 'clearit' and reload page
                     </span>
                 </p>
             </div>
-            <div class="d-flex center ">
-                <label for="Income">Income:</label>
-                <input type="checkbox" name="incomeCheckbox" onclick="changeForm()">
-            </div>
-            <div class="d-flex space-between space-around">
+            <div class="d-flex space-between space-around center ">
+                <div class="d-flex center">
+                    <label for="Income">Income:</label>
+                    <input type="checkbox" name="incomeCheckbox" onclick="changeForm()">
+                </div>
                 <div id="item-type" class=" ">
                     <label for="item">Item:</label>
                     <input type="text" name="item">
@@ -84,9 +94,10 @@
             </div>
         </div>
         </div>
-        <div id="submit-cancel" class="d-flex space-between">
+        <br>
+        <div id="submit-cancel" class="d-flex space-between space-around">
             <button type="submit" onsubmit="addTransOrIncomeOrChangeOwner()">Submit</button>
-            <div id="account-classes" class="d-flex space-between checkbox-grid">
+            <div id="account-classes" class="d-flex  space-between  checkbox-grid">
                 <label for="Food">Food</label>
                 <input type="checkbox" name="foodChk" onclick="foodTest()">
             </div>

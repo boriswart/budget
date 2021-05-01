@@ -25,12 +25,10 @@ let ownerTrans = {
     ownerName: "",
     beginBalance: 0,
 }
-
 let incomeTrans = {
     income: 0,
     desc: '',
 }
-
 let costTrans = {
     item: '',
     cost: 0,
@@ -39,8 +37,6 @@ let costTrans = {
 }
 let budgetTrans = []
 
-
-console.log(runningTotal)
 
 function goToTotal(adder) {
     let storedCell = currentCell
@@ -363,7 +359,7 @@ function drawSpendingAccounts() {
 
     spendingAccounts.forEach(x => {
         template += `
-    <div class="border">
+    <div class="d-flex center">
     <label for="${x}">${x}</label>
     <input type="checkbox" name="${x + 'Chk'}" >
     </div>
@@ -418,4 +414,4 @@ function changeForm() {
 drawChangeOwner(ownerName, 0)
 loadStoredBudget()
 drawSpendingAccounts()
-console.log("Cell: ", currentCell)
+console.log("Cell: Total ", currentCell, runningTotal)
