@@ -44,9 +44,10 @@ console.log(runningTotal)
 
 function goToTotal(adder) {
     let storedCell = currentCell
+    let currentCellLength = currentCell.length
     let locationPtr = document.getElementById(currentCell)
     let currentChar = 'J'
-    let currentNum = currentCell.charAt(1)
+    let currentNum = currentCell.slice(1, currentCellLength)
     currentCell = currentChar + currentNum
     addToRunningTotal(adder)
     currentCell = storedCell
@@ -55,7 +56,10 @@ function goToTotal(adder) {
 function goSpendingAccount(adder, columnChar) {
     let storedCell = currentCell
     let currentChar = columnChar
+    let currentCellLength = currentCell.length
     let currentNum = currentCell.charAt(1)
+
+    currentNum = currentCell.slice(1, currentCellLength)
     currentCell = currentChar + currentNum
     addToSpendingAccount(adder)
     currentCell = storedCell
@@ -196,6 +200,7 @@ function reset_form() {
 
 function drawTransaction(itm, cost, qty, colAccount) {
     let multiplyResult = 0
+    console.log("col: ", colAccount)
     checkLineAddLine()
     let currentCellPtr = document.getElementById(currentCell)
     console.log("Draw Transaction", itm, currentCell)
@@ -286,13 +291,14 @@ function addLine() {
     let locationPtr = document.getElementsByClassName("last")
     let computationLocationPtr = locationPtr[0]
     let template = []
+    let currentCellLength = currentCell.length
     let currentCounter = currentCell
 
     computationLocationPtr.classList.remove("last")
 
     template += `<div id ='computing-location' class='d-flex catagories last' >`
     for (x = 0; x < 10; x++) {
-        currentCounter = columnLetter[x] + currentCell.charAt(1)
+        currentCounter = columnLetter[x] + currentCell.slice(1, currentCellLength)
         template += `<span id = "${currentCounter}"  class="cell next-row ${x % 2 ? '' : 'even'} " > _</span>`
     }
     template += `</div >`
@@ -303,20 +309,30 @@ function addLine() {
 function zeroCollumn() {
     let currentChar = 'A'
     let currentNum = currentCell.charAt(1)
+    let currentCellLength = currentCell.length
+    currentNum = currentCell.slice(1, currentCellLength)
     currentCell = currentChar + currentNum
+    console.log("zero: - CerrentCell", currentChar, currentNum, currentCell, currentCellLength)
 }
 
 
 function incrementCurCellCollumn() {
     let currentChar = columnLetter[currentCell.charCodeAt(0) - 65 + 1]
+    let currentCellLength = currentCell.length
     let currentNum = currentCell.charAt(1)
+    currentNum = currentCell.slice(1, currentCellLength)
     currentCell = currentChar + currentNum
+    console.log("Column: - currentCell: ", currentChar, currentNum, currentCell)
 }
 
 function incrementCurCellRow() {
     let currentChar = currentCell.charAt(0)
-    let currentNum = ((currentCell.charAt(1)).charCodeAt(0) - 48 + 1)
-    currentCell = currentChar + currentNum
+    let currentNum = currentCell.charCodeAt(1) - 48
+    let cellLength = currentCell.length
+
+    currentNum = (parseInt(currentCell.slice(1, cellLength)) + 1)
+    currentCell = currentChar + currentNum.toString()
+    console.log("cellchar: ", currentChar, currentNum, currentCell)
 }
 
 /*    Not Needed fuction : part of drawChangeOwner func
@@ -386,17 +402,15 @@ function toggleTransactionForm() {
 }
 
 function changeForm() {
-    let accountClassesPtr = document.getElementById("account-classes")
-
     if (incomeCheckboxElem[0].checked) {
-        accountClassesPtr.classList.add("hidden")
+        spendingAccountElement.classList.add("hidden")
         itemFormElement.classList.add("hidden")
         costFormElement.classList.add("hidden")
         qtyFormElement.classList.add("hidden")
         incomeFormElement.classList.remove("hidden")
         descFormElement.classList.remove("hidden")
     } else {
-        accountClassesPtr.classList.remove("hidden")
+        spendingAccountElement.classList.remove("hidden")
         itemFormElement.classList.remove("hidden")
         costFormElement.classList.remove("hidden")
         qtyFormElement.classList.remove("hidden")
