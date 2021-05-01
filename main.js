@@ -335,13 +335,6 @@ function incrementCurCellRow() {
     console.log("cellchar: ", currentChar, currentNum, currentCell)
 }
 
-/*    Not Needed fuction : part of drawChangeOwner func
-function setupApp() {
-    drawChangeOwner("William", 0)
-    let ownerElement = document.getElementById("owner")
-    ownerElement.innerText = "Owner: " + ownerName
-}  */
-
 function foodTest() {
     console.log("chk")
 }
