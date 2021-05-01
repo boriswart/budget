@@ -98,10 +98,12 @@ function addTransOrIncomeOrChangeOwner(event) {
         if (incomeCheckboxElem[0].checked) {
             drawIncomeTransaction(form.description.value, form.incomeAmt.value)
             storeIncomeTransaction(form.incomeAmt.value, form.description.value)
+            if (form.incomeAmt) {
+                incrementCurCellRow()
+                zeroCollumn
+            }
             form.reset()
             reset_form()
-            incrementCurCellRow()
-            zeroCollumn
         } else {
             changeOwnerformElement.classList.remove("hidden") /* document.getElementById("change-owner") */
             chgOwnerformElement.classList.add("hidden")       /* document.getElementById("changeOwner")   */
